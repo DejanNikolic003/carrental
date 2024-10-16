@@ -24,7 +24,7 @@ return new class extends Migration
             $table->enum('fuel_type', ['Petrol', 'Diesel', 'Electric']);
             $table->decimal('price', 8, 2);
             $table->enum('status', ['Available', 'Sold', 'Pending']);
-            $table->description('text');
+            $table->text('description');
             $table->timestamps();
             $table->softDeletes();
         });
