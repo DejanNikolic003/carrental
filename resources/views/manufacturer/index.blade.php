@@ -68,8 +68,8 @@
                     </div>
 
                     <div class="relative flex w-full flex-col gap-1">
-                        <x-input-label for="image" :value="__('Upload logo')" />
-                        <input id="fileInput" type="file" class="w-full overflow-clip rounded-md border border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm file:mr-4 file:cursor-pointer file:border-none file:bg-neutral-50 file:px-4 file:py-2 file:font-medium file:text-neutral-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black disabled:cursor-not-allowed disabled:opacity-75" />
+                        <x-input-label for="imagePath" :value="__('Upload logo')" />
+                        <x-file-input id="imagePath" name="imagePath" />
                         <x-input-error :messages="$errors->get('imagePath')" class="mt-2" />
                     </div>
                 </div>
