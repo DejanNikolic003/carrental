@@ -26,10 +26,4 @@ class Car extends Model
     ];
 
 
-    protected function serializeDate(Object $date): string
-    {
-        return $date->format('Y.m.d. H:i:s');
-    }
-
-
 }
