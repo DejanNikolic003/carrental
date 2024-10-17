@@ -11,11 +11,7 @@ class Manufacturer extends Model
 
     protected $fillable = [
         'name',
-        'country',
-        'founded_year',
-        'website',
-        'logo',
-        'description'
+        'imagePath',
     ];
 
     protected function serializeDate(Object $date): string

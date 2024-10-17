@@ -14,11 +14,7 @@ return new class extends Migration
         Schema::create('manufacturers', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('country');
-            $table->date('fouded_year');
-            $table->string('website');
-            $table->string('logo');
-            $table->text('description');
+            $table->string('imagePath');
             $table->timestamps();
             $table->softDeletes();
         });

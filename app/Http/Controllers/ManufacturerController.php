@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ManufacturerRequest;
+use Illuminate\Support\Facades\Storage;
 use App\Models\Manufacturer;
 use Illuminate\Http\Request;
 
@@ -28,7 +30,21 @@ class ManufacturerController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all());
+        $imageName = '';
+
+        if($request->hasFile('image')) {
+            $image = $request->file('image');
+            $imageName = time() . '.' . $image->getClientOriginalExtension();
+
+            $path = $image->storeAs('manufacturers', $imageName, 'public');
+        }
+
+        Manufacturer::create([
+            'name' => $request->name,
+            'imagePath' => $imageName,
+        ]);
+
+        return back()->with('status', 'Successfully added a new manufacturer.');
     }
 
     /**

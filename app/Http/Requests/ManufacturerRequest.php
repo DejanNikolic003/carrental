@@ -11,7 +11,7 @@ class ManufacturerRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,11 +23,6 @@ class ManufacturerRequest extends FormRequest
     {
         return [
             'name' => '',
-            'country' => '',
-            'founed_year' => '',
-            'website' => '',
-            'logo' => '',
-            'description' => '',
         ];
     }
 }

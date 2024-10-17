@@ -57,6 +57,11 @@ return [
             'throw' => false,
         ],
 
+        'images' => [
+            'driver' => 'local',
+            'root' => 'public/uploads/manufacturer_logo',
+        ],
+
     ],
 
     /*
