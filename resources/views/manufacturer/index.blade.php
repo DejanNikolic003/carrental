@@ -6,8 +6,7 @@
                     <div class="flex items-center justify-between mb-5">
                         <x-auth-session-status class="mb-4" :status="session('status')" />
                         <h2>Manufacturers</h2>
-                        <x-primary-button
-                            x-data=""
+                        <x-primary-button x-data=""
                             x-on:click.prevent="$dispatch('open-modal', 'add-new-manufacturer')">
                             {{ __('Add new manufacturer') }}
                         </x-primary-button>
@@ -50,7 +49,12 @@
                     {{ __('Add new manufacturer') }}
                 </h2>
                 <button x-on:click="$dispatch('close')">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="lucide lucide-x">
+                        <path d="M18 6 6 18" />
+                        <path d="m6 6 12 12" />
+                    </svg>
                 </button>
             </div>
             <form method="POST" action={{ route('manufacturers.store') }} class="mt-4" enctype="multipart/form-data">
@@ -58,20 +62,19 @@
                 <div class="space-y-5">
                     <div>
                         <x-input-label for="name" :value="__('Name')" />
-                        <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus />
+                        <x-text-input id="name" class="block mt-1 w-full" type="text" name="name"
+                            :value="old('name')" required autofocus />
                         <x-input-error :messages="$errors->get('name')" class="mt-2" />
                     </div>
 
-
-                    <!-- TODO: Upload image to storage. -->
-                    <div>
-                        <x-input-label for="image" :value="__('Logo')" />
-                        <input type="file" id="image" name="image" class="block mt-1 w-full" accept="image/png, image/jpeg" />
+                    <div class="relative flex w-full flex-col gap-1">
+                        <x-input-label for="image" :value="__('Upload logo')" />
+                        <input id="fileInput" type="file" class="w-full overflow-clip rounded-md border border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm file:mr-4 file:cursor-pointer file:border-none file:bg-neutral-50 file:px-4 file:py-2 file:font-medium file:text-neutral-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black disabled:cursor-not-allowed disabled:opacity-75" />
+                        <x-input-error :messages="$errors->get('imagePath')" class="mt-2" />
                     </div>
                 </div>
 
                 <hr class="mt-5 mb-5 w-full">
-                 <!-- TODO: Save the data in database. -->
                 <div class="flex justify-end">
                     <x-secondary-button x-on:click="$dispatch('close')">
                         {{ __('Close') }}
