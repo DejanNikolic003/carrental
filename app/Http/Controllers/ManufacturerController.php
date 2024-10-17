@@ -6,6 +6,7 @@ use App\Http\Requests\ManufacturerRequest;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Manufacturer;
 use Illuminate\Http\Request;
+use App\Helpers\AppHelper;
 
 class ManufacturerController extends Controller
 {
@@ -30,18 +31,11 @@ class ManufacturerController extends Controller
      */
     public function store(Request $request)
     {
-        $imageName = '';
-
-        if($request->hasFile('image')) {
-            $image = $request->file('image');
-            $imageName = time() . '.' . $image->getClientOriginalExtension();
-
-            $path = $image->storeAs('manufacturers', $imageName, 'public');
-        }
+        $path = AppHelper::imageUpload($request->file('imagePath'), 'manufacturers');
 
         Manufacturer::create([
             'name' => $request->name,
-            'imagePath' => $imageName,
+            'imagePath' => $path,
         ]);
 
         return back()->with('status', 'Successfully added a new manufacturer.');
