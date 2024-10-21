@@ -15,7 +15,7 @@ class ManufacturerController extends Controller
      */
     public function index()
     {
-        return view('manufacturer.index', ['manufacturers' => Manufacturer::all(), 'count' => Manufacturer::count()]);
+        return view('manufacturer.index', ['manufacturers' => Manufacturer::paginate(6), 'count' => Manufacturer::count()]);
     }
 
     /**

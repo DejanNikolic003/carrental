@@ -19,40 +19,40 @@
                 </thead>
                 <tbody class="divide-y divide-neutral-300">
                     @forelse($manufacturers as $manufacturer)
-                    <tr class="text-center">
-                        <td class="font-bold">{{ $manufacturer->id }}</td>
-                        <td>{{ $manufacturer->name }}</td>
-                        <td class="text-center">
-                            <div class="flex justify-center">
-                                <x-tooltip :tooltipMsg="'Image status'">
-                                @if($manufacturer->imagePath)
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="peer w-6 h-6 text-center text-green-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-check"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
-                                @else
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="peer w-6 h-6 text-center text-red-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-x"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/></svg>
-                                @endif
-                                </x-tooltip>
-                            </div>
-                        </td>
-                        <td class="flex items-center justify-end gap-2 p-4">
-                            <button type="button" class="cursor-pointer whitespace-nowrap rounded-md bg-black p-2 text-xs font-medium tracking-wide text-neutral-100 transition hover:opacity-75 text-center focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black active:opacity-100 active:outline-offset-0 disabled:opacity-75 disabled:cursor-not-allowed" x-on:click.prevent="$dispatch('open-modal', 'add-new-manufacturer')">
-                                {{ __('Edit') }}
-                            </button>
-
-                            <form action={{ route('manufacturers.destroy', $manufacturer->id) }} method="POST">
-                                @csrf
-                                @method('delete')
-                                <button type="submit" class="cursor-pointer whitespace-nowrap rounded-md p-2 bg-red-500 text-xs font-medium tracking-wide text-white transition hover:opacity-75 text-center focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-500 active:opacity-100 active:outline-offset-0 disabled:opacity-75 disabled:cursor-not-allowed">
-                                    {{ __('Delete') }}
+                        <tr class="text-center">
+                            <td class="font-bold">{{ $manufacturer->id }}</td>
+                            <td>{{ $manufacturer->name }}</td>
+                            <td class="text-center">
+                                <div class="flex justify-center">
+                                    <x-tooltip :tooltipMsg="'Image status'">
+                                    @if($manufacturer->imagePath)
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="peer w-6 h-6 text-center text-green-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-check"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+                                    @else
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="peer w-6 h-6 text-center text-red-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-x"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/></svg>
+                                    @endif
+                                    </x-tooltip>
+                                </div>
+                            </td>
+                            <td class="flex items-center justify-end gap-2 p-4">
+                                <button type="button" class="cursor-pointer whitespace-nowrap rounded-md bg-black p-2 text-xs font-medium tracking-wide text-neutral-100 transition hover:opacity-75 text-center focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black active:opacity-100 active:outline-offset-0 disabled:opacity-75 disabled:cursor-not-allowed" x-on:click.prevent="$dispatch('open-modal', 'add-new-manufacturer')">
+                                    {{ __('Edit') }}
                                 </button>
-                            </form>
-                        </td>
-                    </tr>
+                                <form action={{ route('manufacturers.destroy', $manufacturer->id) }} method="POST">
+                                    @csrf
+                                    @method('delete')
+                                    <button type="submit" class="cursor-pointer whitespace-nowrap rounded-md p-2 bg-red-500 text-xs font-medium tracking-wide text-white transition hover:opacity-75 text-center focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-500 active:opacity-100 active:outline-offset-0 disabled:opacity-75 disabled:cursor-not-allowed">
+                                        {{ __('Delete') }}
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
                     @empty
                         <tr colspan="3">{{ __('No data found.') }} </tr>
                     @endif
                 </tbody>
             </table>
         </div>
+        {!! $manufacturers->links() !!}
     </div>
 
     <x-modal name="add-new-manufacturer" focusable>
