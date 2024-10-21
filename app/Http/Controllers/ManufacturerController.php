@@ -15,7 +15,7 @@ class ManufacturerController extends Controller
      */
     public function index()
     {
-        return view('manufacturer.index', ['manufacturers' => Manufacturer::all()]);
+        return view('manufacturer.index', ['manufacturers' => Manufacturer::all(), 'count' => Manufacturer::count()]);
     }
 
     /**
@@ -29,8 +29,12 @@ class ManufacturerController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(ManufacturerRequest $request)
     {
+        if(!$request->hasFile('imagePath')) {
+            return back()->with('status', 'Nope.');
+        }
+
         $path = AppHelper::imageUpload($request->file('imagePath'), 'manufacturers');
 
         Manufacturer::create([
