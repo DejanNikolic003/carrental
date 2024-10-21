@@ -72,8 +72,9 @@ class ManufacturerController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Manufacturer $manufacturer)
     {
-        //
+        $manufacturer->delete();
+        return back()->with('status', 'Successfully deleted a manufacturer.');
     }
 }
