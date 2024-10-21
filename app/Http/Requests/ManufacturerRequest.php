@@ -22,7 +22,8 @@ class ManufacturerRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => '',
+            'name' => 'required|string|max:255',
+            'imagePath' => 'mimetypes:image/jpg,image/webp,image/png',
         ];
     }
 }
