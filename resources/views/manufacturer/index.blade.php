@@ -1,44 +1,21 @@
-<x-app-layout>
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900">
-                    <div class="flex items-center justify-between mb-5">
-                        <x-auth-session-status class="mb-4" :status="session('status')" />
-                        <h2>Manufacturers</h2>
-                        <x-primary-button x-data=""
-                            x-on:click.prevent="$dispatch('open-modal', 'add-new-manufacturer')">
-                            {{ __('Add new manufacturer') }}
-                        </x-primary-button>
-                    </div>
-                    <table class="table-auto">
-                        <thead>
-                            <tr>
-                                <th>Song</th>
-                                <th>Artist</th>
-                                <th>Year</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>The Sliding Mr. Bones (Next Stop, Pottersville)</td>
-                                <td>Malcolm Lockyer</td>
-                                <td>1961</td>
-                            </tr>
-                            <tr>
-                                <td>Witchy Woman</td>
-                                <td>The Eagles</td>
-                                <td>1972</td>
-                            </tr>
-                            <tr>
-                                <td>Shining Star</td>
-                                <td>Earth, Wind, and Fire</td>
-                                <td>1975</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+<x-page-layout>
+    <div class="p-6 text-gray-900">
+        <div class="flex items-center justify-between mb-5">
+            <h1 class="text-xl">Manufacturers ({{ $count }})</h1>
+            <x-primary-button x-data=""
+                x-on:click.prevent="$dispatch('open-modal', 'add-new-manufacturer')">
+                {{ __('Add new manufacturer') }}
+            </x-primary-button>
+            <table>
+                <thead>
+
+                </thead>
+                <tbody>
+                    <tr>
+
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 
@@ -87,4 +64,5 @@
             </form>
         </div>
     </x-modal>
-</x-app-layout>
+
+</x-page-layout>
