@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('manufacturers', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('imagePath');
+            $table->string('imagePath')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
