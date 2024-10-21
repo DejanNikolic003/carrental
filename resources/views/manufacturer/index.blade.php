@@ -46,9 +46,13 @@
                                 </form>
                             </td>
                         </tr>
-                    @empty
-                        <tr colspan="3">{{ __('No data found.') }} </tr>
-                    @endif
+                        @empty
+                        <tr>
+                            <td colspan="4" class="p-4 text-center">
+                            {{ __('No data found.') }}
+                            </td>
+                        </tr>
+                    @endforelse
                 </tbody>
             </table>
         </div>

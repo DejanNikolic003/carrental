@@ -1,7 +1,7 @@
 @props(['status'])
 
 @if($status)
-<div class="relative w-full overflow-hidden rounded-md border border-sky-500 bg-white text-neutral-600 dark:bg-neutral-950 dark:text-neutral-300" role="alert">
+<div class="relative w-full overflow-hidden rounded-md border border-sky-500 bg-white text-neutral-60 mb-2" role="alert">
     <div class="flex w-full items-center gap-2 bg-sky-500/10 p-4">
         <div class="bg-sky-500/15 text-sky-500 rounded-full p-1" aria-hidden="true">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-6" aria-hidden="true">
@@ -9,8 +9,8 @@
             </svg>
         </div>
         <div class="ml-2">
-            <h3 class="text-sm font-semibold text-sky-500">Update Available</h3>
-            <p class="text-xs font-medium sm:text-sm">{{ $status }}</p>
+            <h3 class="text-sm font-semibold text-sky-500">{{ $status['title'] }}</h3>
+            <p class="text-xs font-medium sm:text-sm">{{ $status['message'] }}</p>
         </div>
         <button class="ml-auto" aria-label="dismiss alert">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" stroke="currentColor" fill="none" stroke-width="2.5" class="w-4 h-4 shrink-0">

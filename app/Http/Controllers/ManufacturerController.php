@@ -75,6 +75,9 @@ class ManufacturerController extends Controller
     public function destroy(Manufacturer $manufacturer)
     {
         $manufacturer->delete();
-        return back()->with('status', 'Successfully deleted a manufacturer.');
+        return back()->with('status', [
+            'title' => 'Deletion',
+            'message' => 'Successfully deleted manufacturer.'
+        ]);
     }
 }
