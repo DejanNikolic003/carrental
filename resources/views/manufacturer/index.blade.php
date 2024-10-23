@@ -34,9 +34,9 @@
                                 </div>
                             </td>
                             <td class="flex items-center justify-end gap-2 p-4">
-                                <button type="button" class="cursor-pointer whitespace-nowrap rounded-md bg-black p-2 text-xs font-medium tracking-wide text-neutral-100 transition hover:opacity-75 text-center focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black active:opacity-100 active:outline-offset-0 disabled:opacity-75 disabled:cursor-not-allowed" x-on:click.prevent="$dispatch('open-modal', 'add-new-manufacturer')">
+                                <a href={{ route('manufacturers.edit', $manufacturer->id) }} class="cursor-pointer whitespace-nowrap rounded-md bg-black p-2 text-xs font-medium tracking-wide text-neutral-100 transition hover:opacity-75 text-center focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black active:opacity-100 active:outline-offset-0 disabled:opacity-75 disabled:cursor-not-allowed">
                                     {{ __('Edit') }}
-                                </button>
+                                </a>
                                 <form action={{ route('manufacturers.destroy', $manufacturer->id) }} method="POST">
                                     @csrf
                                     @method('delete')
@@ -104,5 +104,4 @@
             </form>
         </div>
     </x-modal>
-
 </x-page-layout>

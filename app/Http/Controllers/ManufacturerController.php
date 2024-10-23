@@ -42,7 +42,10 @@ class ManufacturerController extends Controller
             'imagePath' => $path,
         ]);
 
-        return back()->with('status', 'Successfully added a new manufacturer.');
+        return back()->with('status', [
+            'title' => 'Success',
+            'message' => 'Successfully added a new manufacturer.'
+        ]);
     }
 
     /**
@@ -56,17 +59,32 @@ class ManufacturerController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Manufacturer $manufacturer)
     {
-        //
+        return view('manufacturer.edit', compact('manufacturer'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(ManufacturerRequest $request, Manufacturer $manufacturer)
     {
-        //
+        if(is_null($request->imagePath)) {
+            $manufacturer->update([
+                'name' => $request->name
+            ]);
+        }
+
+        $manufacturer->update([
+            'name' => $request->name,
+            'imagePath' => $request->imagePath,
+        ]);
+
+
+        return view('manufacturer.index')->with('status', [
+            'title' => 'Success',
+            'message' => 'Successfully edited a manufacturer.'
+        ]);
     }
 
     /**
